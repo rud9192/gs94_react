@@ -1,0 +1,48 @@
+#grid {
+    grid-template-columns: repeat(auto-fill, minmax(25%, auto));
+}
+#test_btn1{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin-right:-1px;
+}
+#test_btn2{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-left:-0px;
+    margin-right: 8px;
+}
+#test_btn3{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-left:-0px;
+    margin-right: 8px;
+}
+#btn_group button{
+    border: 1px solid slategray;
+    background-color: rgba(0,0,0,0);
+    color: slategray;
+    padding: 5px;
+}
+#btn_group button:hover{
+    color:white;
+    background-color: slategray;
+}
+#input1 {
+    width: 150px;
+    height: 20px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom : 3px solid black;
+}
+#input2 {
+    width: 80px;
+    height: 25px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 3px solid black;
+}

@@ -1,0 +1,11 @@
+#div1 {
+    border-top: 1px solid #efefef;
+}
+
+#div2 {
+    border-top: 5px solid #efefef;
+}
+#commentdeletebtn {
+    border-radius: 50%;
+    border:none;
+}
