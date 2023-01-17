@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from "axios";
-import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
-import {convertToRaw, EditorState} from "draft-js";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { convertToRaw, EditorState } from "draft-js";
 import draftjsToHtml from "draftjs-to-html";
-import {Editor} from "react-draft-wysiwyg";
+import { Editor } from "react-draft-wysiwyg";
 
 
 function Insert() {
@@ -65,21 +65,21 @@ function Insert() {
                     editorState={editorState}
                     onEditorStateChange={updateTextDescription}
                     toolbar={{
-                        image: {uploadCallback: uploadCallback},
+                        image: { uploadCallback: uploadCallback },
                     }}
-                    localization={{locale: "ko"}}
+                    localization={{ locale: "ko" }}
                     editorStyle={{
-                        height : "400px",
-                        width  : "100%",
-                        border : "3px solid lightgray",
+                        height: "400px",
+                        width: "100%",
+                        border: "3px solid lightgray",
                         padding: "20px",
                     }}
                 />
-                <textarea rows="1" cols="70" id="inputEmail" placeholder="Title!"/><br/>
+                <textarea rows="1" cols="70" id="inputEmail" placeholder="Title!" /><br />
                 <select id="inputcategory">
                     {categorydata}
                 </select>
-                <input type="submit" value="Submit"/>
+                <input type="submit" value="Submit" />
             </form>
         </div>
     )

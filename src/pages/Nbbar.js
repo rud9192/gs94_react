@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
-import {categorystoreupdate} from "../store/category"
-import {useDispatch, useSelector} from "react-redux";
+import React, { useEffect, useState } from 'react';
+import { categorystoreupdate } from "../store/category"
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import './pageCss/Nbbar.css'
 
@@ -12,10 +12,10 @@ function Nbbar(props) {
         f1()
     }, [category.categorytoggle])
     const selectall = () => {
-        dispatch(categorystoreupdate({no: 0, title: "전체 보기"}))
+        dispatch(categorystoreupdate({ no: 0, title: "전체 보기" }))
     }
     const f0 = (i, title) => {
-        dispatch(categorystoreupdate({no: i, title: title, listtoggle: !category.listtoggle}))
+        dispatch(categorystoreupdate({ no: i, title: title, listtoggle: !category.listtoggle }))
     }
     const f1 = () => {
         axios.get("/category")
@@ -36,12 +36,11 @@ function Nbbar(props) {
             })
     }
     const Submit = (e) => {
-        axios.post("/category", null, {
-            params: {
-                categoryname: document.getElementById("input1").value
-            }
-        }).then((res) => {
-            dispatch(categorystoreupdate({categorytoggle: !category.categorytoggle}))
+        const form = new FormData()
+        form.append('categoryname', document.getElementById("input1").value)
+        axios.post("/test/category", form, { headers: { Authorization: localStorage.getItem("Authorization") }, }
+        ).then((res) => {
+            dispatch(categorystoreupdate({ categorytoggle: !category.categorytoggle }))
         })
         e.preventDefault()
     }
@@ -52,14 +51,14 @@ function Nbbar(props) {
             }
         })
             .then((res) => {
-                dispatch(categorystoreupdate({categorytoggle: !category.categorytoggle}))
+                dispatch(categorystoreupdate({ categorytoggle: !category.categorytoggle }))
             })
     }
     return (
         <div>
             <form onSubmit={Submit}>
-                <input id="input1" type="text" name="inputcategoryName" placeholder="입력해주세요!"/>
-                <input id="input2" type="submit" value="Submit"/>
+                <input id="input1" type="text" name="inputcategoryName" placeholder="입력해주세요!" />
+                <input id="input2" type="submit" value="Submit" />
             </form>
             <br />
             <div id="btn_group">

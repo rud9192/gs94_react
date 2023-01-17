@@ -1,13 +1,14 @@
-import React, {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import './pageCss/View.css'
-import {Link, useNavigate, useParams} from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import {DeleteBoard} from "../components/DeleteBoard";
-import {categorystoreupdate} from "../store/category";
+import { DeleteBoard } from "../components/DeleteBoard";
+import { categorystoreupdate } from "../store/category";
 import CommentView from "./CommentView";
 import CommentInsert from "./CommentInsert";
 import styled from "styled-components";
+import { commenttgupdate } from '../store/comment';
 
 const Viewer = styled.div`
   width: calc(50% - 40px);
@@ -26,6 +27,7 @@ function View() {
     const [usertitle, setUsertitle] = useState("");
     const [userdata, setUserdata] = useState("");
     const category = useSelector((state) => state.category.value);
+    const comment = useSelector((state) => state.comment.value);
     const no = useParams().boardno;
     const navigate = useNavigate();
     const dispatch = useDispatch()
@@ -43,6 +45,7 @@ function View() {
                     result.push(
                         res.data[0].boardcontent
                     )
+                    dispatch(commenttgupdate({ commenttoggle: !comment.commenttoggle }))
                     setUserdata(result)
                 })
         } catch (error) {
@@ -52,19 +55,19 @@ function View() {
     const f2 = (i) => {
         DeleteBoard(i)
         navigate('/');
-        dispatch(categorystoreupdate({no: 0, title: "전체 보기"}))
+        dispatch(categorystoreupdate({ no: 0, title: "전체 보기" }))
     }
 
     return (
         <div>
             <div align="left">
-                <a dangerouslySetInnerHTML={{__html: userdata}}>
+                <a dangerouslySetInnerHTML={{ __html: userdata }}>
                 </a>
-                <br/><br/><br/>
+                <br /><br /><br />
             </div>
             <div>
-                <CommentView boardno={no}/>
-                <CommentInsert boardNo={no}/>
+                <CommentView boardno={no} />
+                <CommentInsert boardNo={no} />
             </div>
         </div>
     );
